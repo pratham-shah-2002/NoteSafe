@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #202124;
+  overflow-x: hidden;
+}
+
+#root {
+  background: #202124;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  background: #202124;
+  padding: 20px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  align-self: flex-start;
+  /* display: block; */
+}
+
+.Header_h1 {
+  color: white;
+  display: inline;
+  margin-left: 20px;
+}
+
+.showNote {
+  width: 40%;
+  height: max-content;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.67rem;
+}
+
+.Body {
+  height: max-content;
+  width: 100vw;
+  display: flex;
+  padding: 70px;
+  align-items: center;
+  justify-content: center;
+}
+body {
+  color: #202124;
+}
+.main-div {
+  width: 90%;
+}
+.main-div input {
+  display: block;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  color: white;
+  caret-color: rgba(255, 255, 255, 1);
+  font-size: 0.875rem;
+  font-weight: bolder;
+}
+
+.showNote {
+  display: flex;
+}
+
+.addbtn {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  background: royalblue;
+  font-size: 30px;
+  font-weight: bolder;
+  color: aliceblue;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.card-body {
+  background: #202124;
+  min-width: 360px;
+  height: max-content;
+  padding: 20px;
+  margin: 15px;
+  color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 0.632rem;
+}
+
+.allTheNotes {
+  display: grid;
+  width: 50vw;
+  min-height: 400px;
+  height: max-content;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 20px;
+  margin-left: 100px;
+}
+
+.DeleteBtn {
+  cursor: pointer;
+  float: right;
+}
