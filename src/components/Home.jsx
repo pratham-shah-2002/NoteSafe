@@ -1,10 +1,16 @@
 import React from "react";
 import NoteContext from "../Context/notes/noteContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+
 import Card from "./Card";
 const Home = () => {
   const context = useContext(NoteContext);
-  const { Notes } = context;
+  const { Notes, createNote } = context;
+  const [note, setNote] = useState({title: "", description: ""});
+
+  const onChange = (e) => {
+    setNote({...note, [e.target.name]: e.target.value});
+  }
 
   return (
     <>
@@ -12,14 +18,17 @@ const Home = () => {
         <div className="Body">
           <div className="showNote">
             <div className="main-div">
-              <input type="text" placeholder="Title" className="title" />
+              <input type="text" placeholder="Title" className="title" name="title" value={note.title} onChange={onChange}/>
               <input
                 type="text"
                 placeholder="Take a note..."
                 className="note"
+                value={note.description}
+                onChange={onChange}
+                name="description"
               />
             </div>
-            <button className="addbtn">+</button>
+            <button className="addbtn" onClick={() => createNote(note.title, note.description)}>+</button>
           </div>
         </div>
         <div className="allTheNotes">
@@ -29,7 +38,7 @@ const Home = () => {
                 title={val.title}
                 note={val.description}
                 key={index}
-                id={index}
+                id={val._id}
               />
             );
           })}

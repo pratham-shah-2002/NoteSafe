@@ -27,22 +27,22 @@ const updateNote = async (req, res) => {
   const id = req.params.id;
   try {
     let note = await Notes.findById(id);
-    if (note.user != userId) {
-      return res.status(401).json({ error: "Access Denied" });
+    if(!note){
+      return res.status(400).json({error: "null"});
     }
-    const { title, description, tag } = req.body;
+    if (note.user != userId) {
+      return res.status(401).json({ error: note, userId: userId });
+    }
+    const { title, description } = req.body;
     if (title) {
       note.title = title;
     }
     if (description) {
       note.description = description;
     }
-    if (tag) {
-      note.tag = tag;
-    }
     const newNote = await Notes.findByIdAndUpdate(id, note);
     note = await Notes.findById(id);
-    res.send(note);
+    res.status(200).json({note});
   } catch (error) {
     res.status(500).json({ error: "Internal Server error" });
   }
@@ -60,7 +60,7 @@ const deleteNote = async (req, res) => {
     if (!newNote) {
       return res.status(400).json("Note not found");
     }
-    res.send("Deleted successfully");
+    res.json("Deleted successfully");
   } catch (error) {
     res.status(500).json({ error: "Internal Server error" });
   }

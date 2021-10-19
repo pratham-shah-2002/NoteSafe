@@ -1,7 +1,7 @@
 import React from "react";
-import noteContext from "../Context/notes/noteContext";
+
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+
 const Header = () => {
   const mystyle = {
     background:
@@ -11,7 +11,7 @@ const Header = () => {
     backgroundPosition: "center",
     backgroundSize: "cover",
   };
-  const context = useContext(noteContext);
+  
   return (
     <>
       <div className="container">

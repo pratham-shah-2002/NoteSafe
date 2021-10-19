@@ -6,6 +6,7 @@ const app = express();
 connecttoDB();
 app.use(express.json());
 app.use(cors());
+
 app.use("/api/user", require("./routes/auth"));
 app.use("/api/notes", require("./routes/notes"));
 

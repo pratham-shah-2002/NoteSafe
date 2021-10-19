@@ -22,9 +22,9 @@ const createUser = async (req, res) => {
       },
     };
     const authtoken = jwt.sign(data, JwT_SECRET);
-    res.send(authtoken);
+    res.json({authtoken});
   } catch (error) {
-    res.status(400).send({ error: error.messege });
+    res.status(500).json({error: "Internal Server error"});
   }
 };
 
@@ -50,7 +50,7 @@ const login = async (req, res) => {
     const authtoken = jwt.sign(data, JwT_SECRET);
     res.status(200).json({ authtoken });
   } catch (error) {
-    res.send("Internal server error");
+    res.status(500).json({error: "Internal Server error"});
   }
 };
 
@@ -60,7 +60,7 @@ const getUser = async (req, res) => {
     const user = await User.findById(userId).select("-password");
     res.status(200).json({ user });
   } catch (error) {
-    res.status(500).send("Internal Server error");
+    res.status(500).json({error: "Internal Server error"});
   }
 };
 
