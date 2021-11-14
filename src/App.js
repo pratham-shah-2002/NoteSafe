@@ -8,15 +8,14 @@ import Signup from "./components/Signup";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const App = () => {
-
   return (
     <>
       <NoteState>
         <Router>
           <Modal />
-          <Header />
           <Switch>
             <Route exact path="/">
+              <Header />
               <Home />
             </Route>
             <Route exact path="/login">

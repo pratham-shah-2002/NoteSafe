@@ -14,6 +14,10 @@ const NoteSchema = new Schema({
     type: String,
     required: true,
   },
+  pattern: {
+    type: String,
+    default: "wawe0",
+  },
   tag: {
     type: String,
     default: "General",

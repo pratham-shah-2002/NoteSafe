@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const JwT_SECRET = "Prathamisequivalenttozoro";
 
 const fetchuser = async (req, res, next) => {
   let token = req.header("auth-token");
@@ -7,7 +6,7 @@ const fetchuser = async (req, res, next) => {
     res.status(400).json({ error: "Please enter valid token" });
   }
   try {
-    const data = jwt.verify(token, JwT_SECRET);
+    const data = jwt.verify(token, `${process.env.JwT_SECRET}`);
     req.user = data.user;
     next();
   } catch (error) {

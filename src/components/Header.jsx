@@ -1,28 +1,51 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
+import "../styles/navbar.css";
 
 const Header = () => {
-  const mystyle = {
-    background:
-      'url("https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png")',
-    height: "50px",
-    width: "40px",
-    backgroundPosition: "center",
-    backgroundSize: "cover",
+  const history = useHistory();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    history.push("/login");
   };
-  
+
   return (
     <>
       <div className="container">
         <div className="app_name">
-          <div style={mystyle} className="keep_icon" />
-          <h1 className="Header_h1">Keep</h1>
+          <h1 className="Header_h1">NoteSafe</h1>
         </div>
-        <div className="auth">
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Signup</Link>
-        </div>
+        {!localStorage.getItem("token") ? (
+          <div className="auth">
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+            &nbsp;
+            <Link to="/signup">
+              <button>Signup</button>
+            </Link>
+          </div>
+        ) : (
+          <div className="auth">
+            <button
+              style={{
+                color: "black",
+                border: "none",
+                background: "#cfcccc",
+                cursor: "pointer",
+                padding: ".4rem",
+                borderRadius: ".3rem",
+                fontWeight: "bold",
+                marginLeft: "3rem",
+              }}
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

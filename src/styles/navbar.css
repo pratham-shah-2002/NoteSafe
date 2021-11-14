@@ -1,0 +1,50 @@
+.container {
+  background: rgba(247, 242, 242, 0.7);
+  backdrop-filter: blur(1rem);
+  backdrop-filter: blur(2px);
+  padding: 20px;
+  height: 8vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* position: sticky; */
+  margin: auto;
+  /* top: 0; */
+}
+.Header_h1 {
+  color: #000000;
+  display: inline;
+  margin-left: 20px;
+  font-size: calc(min(45px, 7vh));
+  font-weight: 200;
+}
+
+.app_name {
+  width: 50%;
+  align-items: center;
+  display: flex;
+}
+
+.auth button {
+  border: none;
+  background: #cfcccc;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 0.3rem;
+  font-weight: bold;
+}
+
+.auth {
+  margin-right: 4rem;
+}
+
+.auth a {
+  color: black;
+}
+
+@media screen and (max-width: 480px) {
+  .Header_h1 {
+    margin: 0;
+  }
+}

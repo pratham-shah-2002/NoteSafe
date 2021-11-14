@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;400&display=swap");
+
+.login_img {
+  width: 50%;
+  height: 80%;
+  position: relative;
+}
+.loginIcon {
+  color: #407bff;
+}
+.login_img h1 {
+  text-align: right;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-family: "Raleway", sans-serif;
+  font-size: 40px;
+  font-weight: 100;
+}
+
+.login_img__heading span {
+  color: #407bff;
+  font-size: 50px;
+}
+
+.login-container {
+  height: 100vh;
+  width: 100vw;
+  background: url("/src/images/blob.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  font-family: "Raleway", sans-serif;
+}
+
+.login_img img {
+  height: 100%;
+  width: auto;
+}
+
+.login_field {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: rgba(247, 240, 240, 0.7);
+  height: 40px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  box-shadow: rgba(125, 125, 131, 0.3) -4px 7px 29px 0px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.login {
+  width: 70vw;
+  height: 80vh;
+  display: flex;
+  justify-content: space-around;
+  z-index: 10;
+  align-items: center;
+  overflow-y: hidden;
+  background: rgba(247, 242, 242, 0.7);
+  backdrop-filter: blur(1rem);
+  border-radius: 1rem;
+  box-shadow: rgba(10, 10, 10, 0.3) 0px 7px 29px 0px;
+}
+
+.login-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 40%;
+  height: 90%;
+  padding: 2rem;
+  font-family: "Raleway", sans-serif;
+  border-radius: 1rem;
+  transition: opacity 200ms ease-in;
+}
+.login_modal_img {
+  width: 150px;
+  height: auto;
+}
+.error {
+  transition: opacity 200ms ease-in;
+  min-height: 25px;
+  font-family: "Raleway", sans-serif;
+}
+.login-modal input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 80%;
+}
+
+.login-save {
+  width: 30%;
+  align-self: center;
+  background: #407bff;
+  border-radius: 0.4rem;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-top: 20px;
+}
+
+h4 {
+  font-weight: 400;
+  margin-top: 20px;
+  text-align: center;
+  font-size: larger;
+}
+h4 > a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #407bff;
+}
+
+@media screen and (max-width: 480px) {
+  .login {
+    width: 90vw;
+    height: 60vh;
+  }
+
+  .login_img {
+    display: none;
+  }
+  .login-modal {
+    padding: 0;
+    width: 80%;
+    height: auto;
+  }
+  .login-modal label {
+    display: none;
+  }
+  .login_modal_img {
+    width: 80px;
+    height: auto;
+  }
+  .login_field {
+    height: 28px;
+    padding: 0;
+  }
+  h4 {
+    font-size: 15px;
+  }
+  .login-save {
+    font-weight: 300;
+  }
+}
