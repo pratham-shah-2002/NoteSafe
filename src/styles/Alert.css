@@ -1,0 +1,30 @@
+.alert-container {
+  background: rgb(155, 241, 155);
+  width: 20vw;
+  padding: 1rem 0.5rem;
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  border-radius: 0.5rem;
+  transition: all 200ms ease-in;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: 10;
+}
+
+.alert-messege {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+.fa-check {
+  color: green;
+}
+
+@media screen and (max-width: 480px) {
+  .alert-container {
+    width: 50vw;
+  }
+}

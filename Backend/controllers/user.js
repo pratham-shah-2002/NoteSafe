@@ -4,35 +4,33 @@ const jwt = require("jsonwebtoken");
 
 const createUser = async (req, res) => {
   let success = false;
-  try {
-    let user = await User.findOne({ email: req.body.email });
-    if (user) {
-      return res.status(400).json({ success, error: "User already exists" });
-    }
-    const salt = await bcrypt.genSalt(10);
-    const pass = await bcrypt.hash(req.body.password, salt);
 
-    user = await User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: pass,
-    });
-    // await user.save();
-    console.log({ user });
-
-    const data = {
-      user: {
-        id: user.id,
-      },
-    };
-    const authtoken = jwt.sign(data, `${process.env.JwT_SECRET}`);
-    success = true;
-    res.status(200).json({ success, authtoken });
-  } catch (error) {
-    res
+  let user = await User.findOne({ email: req.body.email });
+  if (user) {
+    return res.status(400).json({ success, error: "User already exists" });
+  }
+  if (!req.body.name || !req.body.email || !req.body.password) {
+    return res
       .status(500)
       .json({ success, error: "Please fill the details correctly" });
   }
+  const salt = await bcrypt.genSalt(10);
+  const pass = await bcrypt.hash(req.body.password, salt);
+  const req_user = {
+    name: req.body.name,
+    email: req.body.email,
+    password: pass,
+  };
+  const newUser = await User.create(req_user);
+
+  const data = {
+    user: {
+      id: newUser._id,
+    },
+  };
+  const authtoken = jwt.sign(data, `${process.env.JwT_SECRET}`);
+  success = true;
+  res.status(200).json({ success, authtoken });
 };
 
 const login = async (req, res) => {

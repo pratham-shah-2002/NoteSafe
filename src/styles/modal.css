@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 350ms ease-in;
 }
 
 .modal {
@@ -22,6 +23,8 @@
   overflow: hidden;
   position: relative;
   z-index: 10;
+  transform: translateY(7vh);
+  transition: all 250ms ease-in;
 }
 
 .preview {
@@ -116,13 +119,13 @@
   background: lightblue;
 }
 .wawe1 {
-  background: rgb(29, 29, 248);
-}
-.wawe2 {
   background: pink;
 }
-.wawe3 {
+.wawe2 {
   background: yellow;
+}
+.wawe3 {
+  background: rgba(29, 29, 248);
 }
 .wawe4 {
   background: rgb(53, 238, 53);

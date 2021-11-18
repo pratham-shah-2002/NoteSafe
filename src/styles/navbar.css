@@ -11,6 +11,7 @@
   /* position: sticky; */
   margin: auto;
   /* top: 0; */
+  display: flex;
 }
 .Header_h1 {
   color: #000000;
@@ -28,7 +29,8 @@
 
 .auth button {
   border: none;
-  background: #cfcccc;
+  background: #ff4444;
+  color: white;
   cursor: pointer;
   padding: 0.4rem;
   border-radius: 0.3rem;
@@ -36,7 +38,7 @@
 }
 
 .auth {
-  margin-right: 4rem;
+  margin-right: 2rem;
 }
 
 .auth a {

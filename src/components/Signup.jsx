@@ -5,9 +5,10 @@ import art from "../images/art.png";
 // eslint-disable-next-line
 
 const Signup = () => {
+  const url = "https://notesafe.herokuapp.com/api/user/createuser";
   const history = useHistory();
   const [err, seterr] = useState("");
-  const [style, setStyle] = useState({ display: "none", color: "red" });
+  const [style, setStyle] = useState({ opacity: 0, color: "red" });
   const [credentials, setcredentials] = useState({
     name: "",
     email: "",
@@ -17,20 +18,17 @@ const Signup = () => {
     setcredentials({ ...credentials, [e.target.name]: e.target.value });
   };
   const signup = async () => {
-    const response = await fetch(
-      "https://notesafe.herokuapp.com/api/user/createuser",
-      {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          name: credentials.name,
-          email: credentials.email,
-          password: credentials.password,
-        }),
-      }
-    );
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name: credentials.name,
+        email: credentials.email,
+        password: credentials.password,
+      }),
+    });
     const json = await response.json();
     console.log(json);
     if (json.success === true) {
@@ -72,6 +70,9 @@ const Signup = () => {
           </div>
           <div className="signup_form">
             <div className="signup_form_container">
+              <div className="SignupIndicator">
+                <h1>Sign Up</h1>
+              </div>
               <div className="error" style={style}>
                 {err}
               </div>
@@ -86,6 +87,7 @@ const Signup = () => {
                     value={credentials.name}
                     onChange={onChange}
                     spellCheck="false"
+                    placeholder="Enter your Name"
                   />
                 </div>
               </div>
@@ -100,6 +102,7 @@ const Signup = () => {
                     value={credentials.email}
                     onChange={onChange}
                     spellCheck="false"
+                    placeholder="Enter your Email"
                   />
                 </div>
               </div>
@@ -114,6 +117,7 @@ const Signup = () => {
                     value={credentials.password}
                     onChange={onChange}
                     spellCheck="false"
+                    placeholder="Enter the password"
                   />
                 </div>
               </div>
@@ -121,7 +125,7 @@ const Signup = () => {
                 Signup
               </button>
               <h3>
-                Already have an account? <Link to="/">Log In</Link>
+                Already have an account? <Link to="/login">Log In</Link>
               </h3>
             </div>
           </div>

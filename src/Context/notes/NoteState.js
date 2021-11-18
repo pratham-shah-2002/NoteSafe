@@ -1,11 +1,36 @@
 import React from "react";
 import NoteContext from "./noteContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const NoteState = (props) => {
   const [Notes, setNotes] = useState([]);
-  const [modalstyle, setmodalstyle] = useState({ display: "none" });
+  const [loading, setLoading] = useState(true);
+  const [modalstyle, setmodalstyle] = useState({
+    visiblity: "hidden",
+    opacity: 0,
+    pointerEvents: "none",
+  });
+  const [modalformstyle, setmodalformstyle] = useState({
+    opacity: 0,
+    transform: "translateY(7vh)",
+  });
   const [sample, setSample] = useState({ background: "" });
+  const [pattern, setPattern] = useState("wawe0");
+  const [alert, setalert] = useState("Note Updated Successfully");
+  const [alertStyle, setalertStyle] = useState({
+    opacity: 0,
+    transform: "translateY(50px)",
+  });
+  const handleAlert = (messege) => {
+    {
+      setalert(messege);
+      setalertStyle({ opacity: 1, transform: "translateY(0)" });
+      setTimeout(() => {
+        setalert(messege);
+        setalertStyle({ opacity: 0, transform: "translateY(50px)" });
+      }, 3000);
+    }
+  };
   const [modalval, setmodalval] = useState({
     title: "",
     description: "",
@@ -13,8 +38,10 @@ const NoteState = (props) => {
     update: false,
     pattern: "",
   });
+
   const [mode, setmode] = useState("light");
   const url = "https://notesafe.herokuapp.com/api/";
+  // const url = "http://localhost:5000/api/";
   const fetchNotes = async () => {
     const response = await fetch(`${url}notes/fetchallnotes`, {
       method: "POST",
@@ -26,6 +53,7 @@ const NoteState = (props) => {
     });
     const notes = await response.json();
     setNotes(notes);
+    setLoading(false);
   };
 
   const createNote = async (title, description, id, pattern) => {
@@ -98,9 +126,20 @@ const NoteState = (props) => {
         setmodalstyle,
         setmodalval,
         mode,
+        loading,
+        setLoading,
         setmode,
         sample,
         setSample,
+        alert,
+        setalert,
+        alertStyle,
+        setalertStyle,
+        handleAlert,
+        pattern,
+        setPattern,
+        modalformstyle,
+        setmodalformstyle,
       }}
     >
       {props.children}

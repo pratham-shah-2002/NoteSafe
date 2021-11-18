@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import NoteContext from "../Context/notes/noteContext";
-import wawe0 from "../images/blue.svg";
-import wawe1 from "../images/darkblue.svg";
-import wawe2 from "../images/pink.svg";
-import wawe3 from "../images/yellow.svg";
-import wawe4 from "../images/green.svg";
-import wawe5 from "../images/red.svg";
+import wawe0 from "../images/wawe0.svg";
+import wawe1 from "../images/wawe1.svg";
+import wawe2 from "../images/wawe2.svg";
+import wawe3 from "../images/wawe3.svg";
+import wawe4 from "../images/wawe4.svg";
+import wawe5 from "../images/wawe5.svg";
 import { useContext } from "react";
 import "../styles/modal.css";
 
@@ -20,25 +20,39 @@ const Modal = () => {
     setmodalval,
     sample,
     setSample,
+    handleAlert,
+    pattern,
+    setPattern,
+    modalformstyle,
+    setmodalformstyle,
   } = context;
   const onChange = (e) => {
     setmodalval({ ...modalval, [e.target.name]: e.target.value });
   };
-  const [pattern, setPattern] = useState("wawe0");
 
   return (
     <div className="modalbg" style={modalstyle}>
-      <div className="modal">
+      <div className="modal" style={modalformstyle}>
         <span
           className="modal-close"
-          onClick={() => setmodalstyle({ display: "none" })}
+          onClick={() => {
+            setmodalstyle({
+              visiblity: "hidden",
+              opacity: 0,
+              pointerEvents: "none",
+            });
+            setmodalformstyle({
+              opacity: 0,
+              transform: "translateY(7vh)",
+            });
+          }}
         >
           X
         </span>
         <div className="preview">
           <div className="sampleNote" style={sample}>
             <div className="sampleNotePattern">
-              <h1>Sample</h1>
+              <h1>Preview</h1>
             </div>
           </div>
         </div>
@@ -149,6 +163,7 @@ const Modal = () => {
                     modalval.id,
                     pattern
                   );
+                  handleAlert("Note Added Successfully");
                   setmodalstyle({ display: "none" });
                   setSample({ background: `url(${wawe0})` });
                   setmodalval({ title: "", description: "", pattern: "wawe0" });
@@ -160,17 +175,23 @@ const Modal = () => {
             ) : (
               <button
                 className="modal-save"
-                onClick={() => {
-                  updateNote(
+                onClick={async () => {
+                  await updateNote(
                     modalval.title,
                     modalval.description,
                     modalval.id,
                     pattern
                   );
                   setmodalstyle({ display: "none" });
-                  setmodalval({ title: "", description: "", pattern: "wawe0" });
+                  setmodalval({
+                    title: "",
+                    description: "",
+                    pattern: "wawe0",
+                    update: true,
+                  });
                   setSample({ background: `url(${wawe0})` });
                   setPattern("wawe0");
+                  handleAlert("Note Editted Successfully");
                 }}
               >
                 Edit Note

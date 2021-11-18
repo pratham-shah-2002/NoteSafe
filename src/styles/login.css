@@ -127,7 +127,7 @@ h4 > a {
 @media screen and (max-width: 480px) {
   .login {
     width: 90vw;
-    height: 60vh;
+    height: 75vh;
   }
 
   .login_img {
@@ -136,7 +136,7 @@ h4 > a {
   .login-modal {
     padding: 0;
     width: 80%;
-    height: auto;
+    height: 80%;
   }
   .login-modal label {
     display: none;
@@ -146,7 +146,7 @@ h4 > a {
     height: auto;
   }
   .login_field {
-    height: 28px;
+    height: 30px;
     padding: 0;
   }
   h4 {

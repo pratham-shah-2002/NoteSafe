@@ -64,6 +64,12 @@
   font-family: "Raleway", sans-serif;
 }
 
+.error {
+  transition: opacity 150ms ease-in;
+  min-height: 15px;
+  font-family: "Raleway", sans-serif;
+}
+
 .signup_heading_h1 span {
   font-size: 65px;
   font-weight: 500;
@@ -91,7 +97,7 @@
 }
 
 .signup_form_container {
-  height: 70%;
+  height: 80%;
   width: 70%;
   display: flex;
   align-items: center;
@@ -120,8 +126,11 @@
   border: none;
   /* border: 1px solid #ff4444; */
   outline: none;
-  color: #ff4444;
+  /* color: #ff4444; */
   width: 80%;
+}
+.SignupIndicator {
+  color: #ff4444;
 }
 
 .signup-save {
@@ -173,6 +182,9 @@ h3 a {
   .signup-field input {
     width: 95%;
   }
+  .error {
+    text-align: left;
+  }
   .signup-field {
     width: 100%;
   }
@@ -180,7 +192,12 @@ h3 a {
     height: 100%;
   }
   .signup_form_container {
-    height: 80%;
+    height: 90%;
+    width: 80%;
+    margin: auto;
+  }
+  .SignupIndicator {
+    color: #ff4444;
   }
   .signup-save {
     font-weight: 300;

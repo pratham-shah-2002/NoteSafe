@@ -6,6 +6,7 @@ import "../styles/login.css";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const url = "https://notesafe.herokuapp.com/api/user/login";
   const [credentials, setcredentials] = useState({ email: "", password: "" });
   const [err, seterr] = useState("");
   const [style, setStyle] = useState({ opacity: 0, color: "red" });
@@ -15,7 +16,8 @@ const Login = () => {
   const history = useHistory();
   const login = async () => {
     const response = await fetch(
-      "https://notesafe.herokuapp.com/api/user/login",
+      url,
+
       {
         method: "POST",
         headers: {
@@ -38,17 +40,9 @@ const Login = () => {
       setcredentials({ email: "", password: "" });
     }
   };
-  // style={{ background: `url(${wawe})`, backgroundSize: "cover" }}
   return (
     <>
-      <div
-        className="login-container"
-        // style={{
-        //   background: `url(${blob})`,
-        //   backgroundSize: "cover",
-        //   backgroundPosition: "center",
-        // }}
-      >
+      <div className="login-container">
         <div className="login">
           <div className="login_img">
             <img src={Image} alt="Login" />

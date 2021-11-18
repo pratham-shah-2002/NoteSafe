@@ -74,6 +74,7 @@ body {
   height: 92vh;
   width: 100vw;
   overflow-x: hidden;
+  position: relative;
 }
 
 .showNote {
@@ -167,6 +168,10 @@ body {
   align-self: center;
 }
 
+.loading-gif {
+  transform: translateX(50vw) translateY(45vh);
+}
+
 @media screen and (min-width: 1080px) {
   ::-webkit-scrollbar {
     width: 10px;
@@ -194,5 +199,8 @@ body {
   }
   .noNotes span {
     display: block;
+  }
+  .loading-gif {
+    transform: translateX(45vw) translateY(45vh);
   }
 }

@@ -29,21 +29,7 @@ const Header = () => {
           </div>
         ) : (
           <div className="auth">
-            <button
-              style={{
-                color: "black",
-                border: "none",
-                background: "#cfcccc",
-                cursor: "pointer",
-                padding: ".4rem",
-                borderRadius: ".3rem",
-                fontWeight: "bold",
-                marginLeft: "3rem",
-              }}
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
+            <button onClick={handleLogout}>Logout</button>
           </div>
         )}
       </div>
